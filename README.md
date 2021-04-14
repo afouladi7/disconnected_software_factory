@@ -3,24 +3,24 @@
 
 ## Overview
 
-This guide is intended to demonstrate how to perform the OpenShift installation using the IPI method on AWS GovCloud. In addition, the guide will walk through performing this installation on a fresh GovCloud account. If you already have a VPC setup and subnets, please skip to second step. Additionally this demostrates the install of Operator Catalog with addition to the Red Hat Gov Operator Catalog
+This guide is intended to demonstrate how to perform the OpenShift installation using the IPI method on AWS GovCloud. In addition, the guide will walk through performing this installation on a fresh GovCloud account. If you already have a VPC setup and subnets, please skip to first step. Additionally this demostrates the install of Operator Catalog with addition to the Red Hat Gov Operator Catalog
 
 ## YouTube Video
 
 A video that walks through this guide is available here: https://youtu.be/bHmcWHF-sEA
 
 ## AWS Configuration Requirements for Demo
-<figure>
-  <img src="./aws-gov-ipi-dis-maniam/aws-gov-vpc-drawing.svg" width="800"/>
-  <figcaption>Image: Demo VPC Drawing</figcaption>
-  <p></p>
-</figure>
    
-   
+For this demo, that AWS API communication is facilitated by a squid proxy. Without that access, we will not be able to install a cloud aware OpenShift cluster. 
 
-In this guide, we will install OpenShift onto an existing AWS GovCloud VPC. This VPC will contain three private subnets that have no connectivity to the internet, as well as a public subnet that will facilitate our access to the private subnets from the internet (bastion). We still need to allow access to the AWS APIs from the private subnets. For this demo, that AWS API communication is facilitated by a squid proxy. Without that access, we will not be able to install a cloud aware OpenShift cluster. 
+A Cloud Formation template that details the VPC with squid proxy used in this demo can be found [**here**](https://github.com/dmc5179/openshift4-disconnected/blob/master/cloudformation/disconnected_vpc/disconnected_vpc.yaml). This will be needed to install Openshift, bundle the images, and create the AMI. The following ports will need to be open to communicate with the OCP nodes and AWS API once the EC2 is running.
 
-A Cloud Formation template that details the VPC with squid proxy used in this demo can be found [**here**](https://github.com/dmc5179/openshift4-disconnected/blob/master/cloudformation/disconnected_vpc/disconnected_vpc.yaml). This demo assumes these are provided, but this template may be leveraged to create these resources if desired.
+| Ports     | IPs |
+| ----------- | ----------- |
+| 5000        | 0.0.0.0/0   |
+| 443         | 108.175.0.0/16 |
+| 443         | 96.127.0.0/16 | 
+| 443         | 52.46.0.0/16 |
 
 
 This guide will assume that the user has valid accounts and subscriptions to both Red Hat OpenShift and AWS GovCloud.
@@ -28,7 +28,7 @@ This guide will assume that the user has valid accounts and subscriptions to bot
 ## Installing OpenShift 
 
 ### Create OpenShift Installation Bundle
-1. Download and compress the bundle on internet connected machine using the OpenShift4-mirror companion utility found [**here**](https://repo1.dso.mil/platform-one/distros/red-hat/ocp4/openshift4-mirror)
+1. Use AWS Session Manager to connect to the EC2. Download and compress the bundle on internet connected machine using the OpenShift4-mirror companion utility found [**here**](https://repo1.dso.mil/platform-one/distros/red-hat/ocp4/openshift4-mirror)
    
 
    You will first need to retrieve an OpenShift pull secret. Once you have retrieved that, enter it into the literals of the value for `--pull-secret` in the command below. Pull secrets can be obtained from https://cloud.redhat.com/openshift/install/aws/installer-provisioned
@@ -199,3 +199,4 @@ You can now access the cluster via CLI with oc or the web console with a web bro
     ```
     INFO Login to the console with user: "kubeadmin", and password: "z9yDP-2M6DS-oE9Im-Dcdzk
     ```
+21. Create a RHEL 7.9 EC2 from the AWS console
