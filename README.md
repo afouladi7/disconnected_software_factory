@@ -229,7 +229,7 @@ You can now access the cluster via CLI with oc or the web console with a web bro
       ```
 28. Start the images transfer (this will take a while!)
       ```
-      ./disconnected_images_transfer.sh
+      sudo ./disconnected_images_transfer.sh
       ```
 29. Update the machineconfig on Openshift to use the new local mirror
       Login to OC via the token, located in the top right of the OCP console.
