@@ -239,4 +239,27 @@ You can now access the cluster via CLI with oc or the web console with a web bro
       ```
 30. Wait till the master and workers have been updated. If you do see some pods still in a failing or image pull back state. Delete them and they should pull from the correct location.
        
-      
+31. Create a `CatalogSource` to import the RedHatGov operator catalog.
+```
+  oc apply -f - << EOF
+  apiVersion: operators.coreos.com/v1alpha1
+  kind: CatalogSource
+  metadata:
+    name: redhatgov-operators
+    namespace: openshift-marketplace
+  spec:
+    sourceType: grpc
+    image: quay.io/redhatgov/operator-catalog:latest
+    displayName: Red Hat NAPS Community Operators
+    publisher: RedHatGov
+  EOF      
+```
+
+32. Create a project for your pipeline tooling to live.
+
+  `oc new-project devsecops`
+
+33. Ploigos is hungry - delete any `LimitRange` that might have been created from project templates:
+
+  `oc delete limitrange --all -n devsecops`
+34. Install Ploigos Operator  
