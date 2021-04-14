@@ -5,10 +5,6 @@
 
 This guide is intended to demonstrate how to perform the OpenShift installation using the IPI method on AWS GovCloud. In addition, the guide will walk through performing this installation on a fresh GovCloud account. If you already have a VPC setup and subnets, please skip to first step. Additionally this demostrates the install of Operator Catalog with addition to the Red Hat Gov Operator Catalog
 
-## YouTube Video
-
-A video that walks through this guide is available here: https://youtu.be/bHmcWHF-sEA
-
 ## AWS Configuration Requirements for Demo
    
 For this demo, that AWS API communication is facilitated by a squid proxy. Without that access, we will not be able to install a cloud aware OpenShift cluster. 
@@ -199,4 +195,40 @@ You can now access the cluster via CLI with oc or the web console with a web bro
     ```
     INFO Login to the console with user: "kubeadmin", and password: "z9yDP-2M6DS-oE9Im-Dcdzk
     ```
-21. Create a RHEL 7.9 EC2 from the AWS console
+21. Create a RHEL 7.9 EC2 from the AWS console within your public subnet to be our local container registry 
+
+22. Please SSH into EC2 and register RHEL instance will subscription manager
+      ``` 
+      sudo subscription-manager register --auto-attach 
+      ```
+23. Install Podman & Skopeo &
+      ```
+      sudo yum install -y podman httpd-tools skopeo jq
+      ```
+24. Create folders for the registry
+      ```
+      sudo mkdir -p /var/lib/registry
+      ```
+25. Deploy local podman registry
+      ```
+      sudo podman run --privileged -d --name registry -p 5000:5000 -v /var/lib/registry:/var/lib/registry --restart=always registry:2
+      ```
+26. Allow traffic from firewall
+      ```
+      sudo firewall-cmd --add-port=5000/tcp --zone=internal --permanent
+      sudo firewall-cmd --add-port=5000/tcp --zone=public --permanent
+      sudo firewall-cmd --reload
+      ```
+27. Add Red Hat pull secret to Podman creditials file
+      Copy pull secret from cloud.redhat.com and place it in the EC2 as pull.yaml
+      ```
+      sudo jq . pull.yaml >> /root/.docker/config.json
+      ```
+28. Start the images transfer (this will take a while!)
+      ```
+      ./disconnected_images_transfer.sh
+      ```
+29. Update the machineconfig on Openshift to use the new local mirror
+      Login to OC via the token, located in the top right of the OCP console.
+       
+      
