@@ -204,7 +204,7 @@ You can now access the cluster via CLI with oc or the web console with a web bro
       ``` 
       sudo subscription-manager register --auto-attach 
       ```
-23. Install Podman & Skopeo &
+23. Install Podman & Skopeo & JQ
       ```
       sudo yum install -y podman httpd-tools skopeo jq
       ```
