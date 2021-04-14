@@ -195,6 +195,9 @@ You can now access the cluster via CLI with oc or the web console with a web bro
     ```
     INFO Login to the console with user: "kubeadmin", and password: "z9yDP-2M6DS-oE9Im-Dcdzk
     ```
+#
+### Adding Operators into Openshift
+
 21. Create a RHEL 7.9 EC2 from the AWS console within your public subnet to be our local container registry 
 
 22. Please SSH into EC2 and register RHEL instance will subscription manager
@@ -230,5 +233,10 @@ You can now access the cluster via CLI with oc or the web console with a web bro
       ```
 29. Update the machineconfig on Openshift to use the new local mirror
       Login to OC via the token, located in the top right of the OCP console.
+      ```
+      ./local_reg.sh
+      ./machine_config.sh
+      ```
+30. Wait till the master and workers have been updated. If you do see some pods still in a failing or image pull back state. Delete them and they should pull from the correct location.
        
       
