@@ -261,5 +261,6 @@ You can now access the cluster via CLI with oc or the web console with a web bro
 
 33. Ploigos is hungry - delete any `LimitRange` that might have been created from project templates:
 
-  `oc delete limitrange --all -n devsecops`
+  ```oc delete limitrange --all -n devsecops```
+  
 34. Install Ploigos Operator  
