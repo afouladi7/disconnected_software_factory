@@ -110,12 +110,12 @@ This guide will assume that the user has valid accounts and subscriptions to bot
       name: i.e. test-cluster
     networking:
       machineNetwork:
-      - cidr: i.e. 10.0.41.0/20. Shorten or lengthen this list as needed.
+      - cidr: i.e. 10.0.41.0/20. Shorten or lengthen this list as needed. You will need 3 of these.
     platform:
       aws:
         region: the default region of your configured aws cli 
         zones: A list of availability zones that you are deploying into. Shorten or lengthen this list as needed.
-        subnets: i.e. subnet-ef12d288. The length of this list must match the .networking.machineNetwork[].cidr length.
+        subnets: i.e. subnet-ef12d288. Please add all 3 subnets in AZ. The length of this list must match the .networking.machineNetwork[].cidr length.
         amiID: the AMI ID recorded from step 9
         pullSecret: your pull secret enclosed in literals
         sshKey: i.e ssh-rsa AAAAB3... No quotes
