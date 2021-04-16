@@ -3,7 +3,7 @@
 
 ## Overview
 
-This guide is intended to demonstrate how to perform the OpenShift installation using the IPI method on AWS GovCloud. In addition, the guide will walk through performing this installation on a fresh GovCloud account. If you already have a VPC setup and subnets, please skip to first step. Additionally this demostrates the install of Operator Catalog with addition to the Red Hat Gov Operator Catalog
+This guide is intended to demonstrate how to perform the OpenShift installation using the IPI method on AWS GovCloud. In addition, the guide will walk through performing this installation on a fresh GovCloud account. If you already have a VPC setup and subnets, please skip to Installing Openshift. Additionally this demostrates the install of Operator Catalog with addition to the Red Hat Gov Operator Catalog
 
 ## AWS Configuration Requirements for Demo
    
@@ -19,12 +19,12 @@ A Cloud Formation template that details the VPC with squid proxy used in this de
 | 443         | 52.46.0.0/16 |
 
 
-This guide will assume that the user has valid accounts and subscriptions to both Red Hat OpenShift and AWS GovCloud.
+This guide will assume that the user has valid accounts and subscriptions to both Red Hat OpenShift and AWS GovCloud. In this demo we are using Cluster Admin credentials in AWS, but can use the VM Import/Export role + EC2 LB + Route 53 (if using for DNS).  
 #
 ## Installing OpenShift 
 
 ### Create OpenShift Installation Bundle
-1. Use AWS Session Manager to connect to the EC2. Download and compress the bundle on internet connected machine using the OpenShift4-mirror companion utility found [**here**](https://repo1.dso.mil/platform-one/distros/red-hat/ocp4/openshift4-mirror)
+1. Use AWS Session Manager to connect to the EC2 squid proxy that seconds as the bootstramp. Download and compress the bundle on internet connected machine using the OpenShift4-mirror companion utility found [**here**](https://repo1.dso.mil/platform-one/distros/red-hat/ocp4/openshift4-mirror)
    
 
    You will first need to retrieve an OpenShift pull secret. Once you have retrieved that, enter it into the literals of the value for `--pull-secret` in the command below. Pull secrets can be obtained from https://cloud.redhat.com/openshift/install/aws/installer-provisioned
