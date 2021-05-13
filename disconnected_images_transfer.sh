@@ -471,20 +471,20 @@ docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:d9649eaed742c7c53
 docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:df9b1e1d04ada670d627e906e80b25ea9c33dc23d439a80bbf10de0758d22e0b \
   docker://18.252.71.151:5000/openshift-release-dev/ocp-v4.0-art-dev@sha256:df9b1e1d04ada670d627e906e80b25ea9c33dc23d439a80bbf10de0758d22e0b
 
-skopeo copy --all --dest-tls-verify=false --authfile /root/.docker/config.json docker://registry.redhat.io/redhat/redhat-operator-index:v4.7 ${internal_reg}/redhat/redhat-operator-index:v4.7
+skopeo copy --all --dest-tls-verify=false docker://registry.redhat.io/redhat/redhat-operator-index:v4.7 ${internal_reg}/redhat/redhat-operator-index:v4.7
 
-skopeo copy --all --dest-tls-verify=false --authfile /root/.docker/config.json docker://registry.redhat.io/redhat/redhat-operator-index:v4.7 ${internal_reg}/redhat/redhat-operator-index:v4.7
+skopeo copy --all --dest-tls-verify=false docker://registry.redhat.io/redhat/redhat-operator-index:v4.7 ${internal_reg}/redhat/redhat-operator-index:v4.7
 
-skopeo copy --all --dest-tls-verify=false --authfile /root/.docker/config.json docker://registry.redhat.io/redhat/certified-operator-index:v4.7 ${internal_reg}/redhat/certified-operator-index:v4.7
+skopeo copy --all --dest-tls-verify=false docker://registry.redhat.io/redhat/certified-operator-index:v4.7 ${internal_reg}/redhat/certified-operator-index:v4.7
 
-skopeo copy --all --dest-tls-verify=false --authfile /root/.docker/config.json docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:05302fab01c683af02c51571dae4211c02774bab7cb02c8ac65495f055149722 ${internal_reg}/openshift-release-dev@sha256:05302fab01c683af02c51571dae4211c02774bab7cb02c8ac65495f055149722
+skopeo copy --all --dest-tls-verify=false docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:05302fab01c683af02c51571dae4211c02774bab7cb02c8ac65495f055149722 ${internal_reg}/openshift-release-dev@sha256:05302fab01c683af02c51571dae4211c02774bab7cb02c8ac65495f055149722
 
-skopeo copy --all --dest-tls-verify=false --authfile /root/.docker/config.json docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:a8492014930da85a4ed1036a4d1f6907c1a7cf76fffae7490ea7e18a89cdfd10 ${internal_reg}/openshift-release-dev@sha256:a8492014930da85a4ed1036a4d1f6907c1a7cf76fffae7490ea7e18a89cdfd10
+skopeo copy --all --dest-tls-verify=false docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:a8492014930da85a4ed1036a4d1f6907c1a7cf76fffae7490ea7e18a89cdfd10 ${internal_reg}/openshift-release-dev@sha256:a8492014930da85a4ed1036a4d1f6907c1a7cf76fffae7490ea7e18a89cdfd10
 
-skopeo copy --all --dest-tls-verify=false --authfile /root/.docker/config.json docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:764ed0b5a79f750aae88f9f17dbf74c8b6134b39010c28c182d6a6fd6be40b1d ${internal_reg}/openshift-release-dev@sha256:764ed0b5a79f750aae88f9f17dbf74c8b6134b39010c28c182d6a6fd6be40b1d
+skopeo copy --all --dest-tls-verify=false docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:764ed0b5a79f750aae88f9f17dbf74c8b6134b39010c28c182d6a6fd6be40b1d ${internal_reg}/openshift-release-dev@sha256:764ed0b5a79f750aae88f9f17dbf74c8b6134b39010c28c182d6a6fd6be40b1d
 
-skopeo copy --all --dest-tls-verify=false --authfile /root/.docker/config.json docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:30d25b2bd9a7bd9ff59ed4fe15fe3b2628f09993004fd4bf318a80ab0715809c ${internal_reg}/openshift-release-dev@sha256:30d25b2bd9a7bd9ff59ed4fe15fe3b2628f09993004fd4bf318a80ab0715809c
+skopeo copy --all --dest-tls-verify=false docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:30d25b2bd9a7bd9ff59ed4fe15fe3b2628f09993004fd4bf318a80ab0715809c ${internal_reg}/openshift-release-dev@sha256:30d25b2bd9a7bd9ff59ed4fe15fe3b2628f09993004fd4bf318a80ab0715809c
 
-skopeo copy --all --dest-tls-verify=false --authfile /root/.docker/config.json docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:08d81d44f449025c59b133fd040f01423c090ac043a632b30880caf8d725b7e6 ${internal_reg}/openshift-release-dev@sha256:08d81d44f449025c59b133fd040f01423c090ac043a632b30880caf8d725b7e6
+skopeo copy --all --dest-tls-verify=false docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:08d81d44f449025c59b133fd040f01423c090ac043a632b30880caf8d725b7e6 ${internal_reg}/openshift-release-dev@sha256:08d81d44f449025c59b133fd040f01423c090ac043a632b30880caf8d725b7e6
 
-skopeo copy --all --dest-tls-verify=false --authfile /root/.docker/config.json docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:0ef1757a9334675bfd06275e1ed53af30f31a88ad8c711b19833e3a9539aa932 ${internal_reg}/openshift-release-dev@sha256:0ef1757a9334675bfd06275e1ed53af30f31a88ad8c711b19833e3a9539aa932
+skopeo copy --all --dest-tls-verify=false docker://quay.io/openshift-release-dev/ocp-v4.0-art-dev@sha256:0ef1757a9334675bfd06275e1ed53af30f31a88ad8c711b19833e3a9539aa932 ${internal_reg}/openshift-release-dev@sha256:0ef1757a9334675bfd06275e1ed53af30f31a88ad8c711b19833e3a9539aa932
