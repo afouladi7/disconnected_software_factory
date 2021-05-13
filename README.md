@@ -23,6 +23,13 @@ This guide will assume that the user has valid accounts and subscriptions to bot
 #
 ## Installing OpenShift 
 
+### Dependencies
+
+You will need to install podman to pull the images, skopeo to copy the additional images, and jq for your pull secret.
+
+```sudo yum install podman skopeo jq -y```
+
+
 ### Create OpenShift Installation Bundle
 1. Use AWS Session Manager to connect to the EC2 squid proxy that seconds as the bootstramp. Download and compress the bundle on internet connected machine using the OpenShift4-mirror companion utility found [**here**](https://repo1.dso.mil/platform-one/distros/red-hat/ocp4/openshift4-mirror)
    
