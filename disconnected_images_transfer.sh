@@ -1,6 +1,6 @@
 #!/bin/bash
 
-read -p "Please enter the IP of your Docker Container Registry: " ip
+read -p "Please enter the IP of your Container Registry: " ip
 read -p "Please enter your Red Hat Pull Secret (cloud.redhat.com): " pull
 
 jq -n $pull > /run/containers/0/auth.json
