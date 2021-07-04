@@ -123,7 +123,7 @@ You will need to install podman to pull the images, skopeo to copy the additiona
         region: the default region of your configured aws cli 
         zones: A list of availability zones that you are deploying into. Shorten or lengthen this list as needed.
         subnets: i.e. subnet-ef12d288. Please add all 3 subnets in AZ. The length of this list must match the .networking.machineNetwork[].cidr length.
-        amiID: the AMI ID recorded from step 9
+        amiID: the AMI ID recorded from step 7
         pullSecret: your pull secret enclosed in literals
         sshKey: i.e ssh-rsa AAAAB3... No quotes
     ```
