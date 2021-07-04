@@ -106,7 +106,7 @@ You will need to install podman to pull the images, skopeo to copy the additiona
     cp ./4.7.0/ocp-disconnected/aws-gov-ipi-dis-maniam/install-config-template.yaml ./4.7.0/config/install-config.yaml
     ```
 10. Edit install config
-    For this step, Open `./4.7.0/config/install-config.yaml` and edit the following fields:
+    for this step, Open `./4.7.0/config/install-config.yaml` and edit the following fields:
 
     ```
     baseDomain: i.e. example.com
