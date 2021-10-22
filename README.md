@@ -7,7 +7,7 @@ This guide is intended to demonstrate how to perform the OpenShift installation 
 
 ## AWS Configuration Requirements for Demo
    
-For this demo, that AWS API communication is facilitated by a squid proxy. Without that access, we will not be able to install a cloud aware OpenShift cluster. 
+For this demo, the AWS API communication is facilitated by a squid proxy. Without that access, we will not be able to install a cloud aware OpenShift cluster. 
 
 A Cloud Formation template that details the VPC with squid proxy used in this demo can be found [**here**](https://github.com/dmc5179/openshift4-disconnected/blob/master/cloudformation/disconnected_vpc/disconnected_vpc.yaml). This will be needed to install Openshift, bundle the images, and create the AMI. The following ports will need to be open to communicate with the OCP nodes and AWS API once the EC2 is running.
 
